@@ -5,7 +5,7 @@ describe "adding topics" do
     visit new_topic_path
     fill_in "Name", with: "First Report"
     click_on "Create Topic"
-    visit_topics_path
+    visit topics_path
     expect(page).to have_content("First Report")
   end
 end

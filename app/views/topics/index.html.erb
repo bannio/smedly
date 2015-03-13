@@ -1,0 +1,18 @@
+<h1>Topics</h1>
+
+<table>
+  <thead>
+    <th>Date</th>
+    <th>Title</th>
+    <th>Status</th>
+  </thead>
+  <tbody>
+  <% @topics.each do |topic| %>
+    <tr>
+      <td><%= topic.publish_date %></td>
+      <td><%= topic.name %></td>
+      <td><%= topic.status %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
