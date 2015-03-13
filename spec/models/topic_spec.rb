@@ -9,8 +9,4 @@ describe Topic, type: :model do
     topic = Topic.new(name: "")
     expect(topic).to_not be_valid
   end
-  it "belongs to a site" do
-    topic = Topic.new
-    site = double(Site)
-  end
 end
