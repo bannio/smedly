@@ -1,15 +1,17 @@
 class PostsController < ApplicationController
 
-  def new
-    @post = Post.new
-  end
+  # def new
+  #   @topic = Topic.find(params[:topic_id])
+  #   @post = @topic.posts.build
+  # end
 
   def create
-    @post = Post.new(post_params)
+    @topic = Topic.find(params[:post][:topic_id])
+    @post = @topic.posts.build(post_params)
     if @post.save
-      redirect_to @post.topic
+      redirect_to @topic
     else
-      render :new
+      render 'topics/show'
     end
   end
 

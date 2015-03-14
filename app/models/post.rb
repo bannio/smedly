@@ -4,6 +4,6 @@ class Post < ActiveRecord::Base
 
   enum status: [:draft, :final, :posted]
 
-  validates_presence_of :topic_id
+  validates_presence_of :topic_id, :content
 
 end
