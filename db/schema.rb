@@ -11,10 +11,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150313105027) do
+ActiveRecord::Schema.define(version: 20150314112157) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "platforms", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.integer  "topic_id"
+    t.text     "content"
+    t.date     "posted_on"
+    t.integer  "status",      default: 0
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.integer  "platform_id"
+  end
+
+  add_index "posts", ["platform_id"], name: "index_posts_on_platform_id", using: :btree
+  add_index "posts", ["topic_id"], name: "index_posts_on_topic_id", using: :btree
 
   create_table "sites", force: :cascade do |t|
     t.string   "name"
@@ -31,4 +50,5 @@ ActiveRecord::Schema.define(version: 20150313105027) do
     t.integer  "status",       default: 0
   end
 
+  add_foreign_key "posts", "topics"
 end

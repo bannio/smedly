@@ -4,7 +4,7 @@ class CreatePosts < ActiveRecord::Migration
       t.references :topic, index: true
       t.text :content
       t.date :posted_on
-      t.integer :status
+      t.integer :status, default: 0
 
       t.timestamps null: false
     end

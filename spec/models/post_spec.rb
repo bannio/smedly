@@ -1,5 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Post, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it "starts life as draft" do
+    post = Post.new
+    expect(post.draft?).to be_truthy
+  end
 end
