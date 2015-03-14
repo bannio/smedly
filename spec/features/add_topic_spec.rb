@@ -6,6 +6,7 @@ describe "adding topics" do
     fill_in "Name", with: "First Report"
     click_on "Create Topic"
     visit topics_path
-    expect(page).to have_content("First Report")
+    @topic = Topic.find_by_name("First Report")
+    expect(page).to have_selector("#topic_#{@topic.id} .name", text: "First Report")
   end
 end

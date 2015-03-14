@@ -1,0 +1,18 @@
+<h1><%= @topic.name %></h1>
+
+<table>
+  <tr>
+    <td>Date:</td>
+    <td><%= @topic.publish_date %></td>
+  </tr>
+  <tr>
+    <td>Summary:</td>
+    <td><%= simple_format("#{@topic.summary}") %></td>
+  </tr>
+</table>
+
+<%= link_to "Edit", edit_topic_path(@topic) %><br>
+<%= link_to "Back to Topic list", topics_path %>
+<%= link_to "Add post", new_post_path %>
+
+<hr>

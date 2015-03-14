@@ -1,17 +1,22 @@
 <h1>Topics</h1>
 
+<%= button_to "New", new_topic_path, method: :get %>
+
 <table>
   <thead>
-    <th>Date</th>
-    <th>Title</th>
-    <th>Status</th>
+    <tr>
+      <td>Date</td>
+      <td>Title</td>
+      <td>Status</td>
+    </tr>
   </thead>
   <tbody>
   <% @topics.each do |topic| %>
-    <tr>
+    <tr class="topic-row" id="<%= dom_id(topic) %>">
       <td><%= topic.publish_date %></td>
-      <td><%= topic.name %></td>
+      <td class="name"><%= topic.name %></td>
       <td><%= topic.status %></td>
+      <td><%= link_to 'view', topic_path(topic) %></td>
     </tr>
   <% end %>
   </tbody>
