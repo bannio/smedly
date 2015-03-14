@@ -1,0 +1,13 @@
+<%= form_for @topic do |f| %>
+  <%= f.label :name %>:
+  <%= f.text_field :name %><br>
+  <%= f.label :summary %>:
+  <%= f.text_area :summary %><br>
+  <%= f.label :publish_date %>:
+  <%= f.date_field :publish_date %><br>
+  <% if action_name == 'edit' %>
+    <%= f.submit "Save" %>
+  <% else %>
+    <%= f.submit "Create Topic" %>
+  <% end %>
+<% end %>

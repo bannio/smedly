@@ -1,0 +1,10 @@
+<%= form_for @post do |f| %>
+  <%= f.label :content %>:
+  <%= f.text_area :content %><br>
+  <%= f.label :posted_on %>:
+  <%= f.date_field :posted_on %><br>
+  <%= f.label :platform %>
+  <%= f.collection_select(:platform_id, Platform.all, :id, :name) %>
+  <br>
+  <%= f.submit "Save" %>
+<% end %>
