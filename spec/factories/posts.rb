@@ -1,9 +1,10 @@
 FactoryGirl.define do
   factory :post do
     topic nil
-content "MyText"
-posted_on "2015-03-14"
-status 1
+    content "MyText"
+    posted_on Date.today
+    status 0
+    platform
   end
 
 end

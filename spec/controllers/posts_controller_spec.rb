@@ -9,9 +9,9 @@ RSpec.describe PostsController, type: :controller do
   #     expect(assigns(:post)).to be_an_instance_of(Post)
   #   end
   # end
+  let(:topic) { FactoryGirl.create(:topic) }
 
   describe "POST create" do
-    let(:topic) { FactoryGirl.create(:topic) }
 
     it "creates a post and redirects to parent topic" do
       post :create, post: {content: "some content", topic_id: topic.id}
@@ -24,6 +24,15 @@ RSpec.describe PostsController, type: :controller do
       # allow_any_instance_of(Post).to receive(:save).and_return(false)
       expect(response).to render_template('topics/show')
       expect(assigns(:post)).to be_present
+    end
+  end
+
+  describe "GET edit" do
+    let(:post) { FactoryGirl.create(:post, topic: topic) }
+    it "renders the post in the form on the show page" do
+      get :edit, id: post.id
+      expect(response).to have_http_status(:success)
+      expect(response).to render_template('topics/show')
     end
   end
 end

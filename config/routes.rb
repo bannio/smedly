@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
 
-  resources :handles
-
   resources :topics
   resources :posts
+  resources :handles
+  
   # resources :topics do
   #   resources :posts, only: [:index, :new, :create]
   # end

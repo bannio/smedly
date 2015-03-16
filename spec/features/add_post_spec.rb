@@ -9,8 +9,6 @@ describe "adding posts to topics" do
 
   it "allows a user to add a post to topic" do
     visit topic_path(topic)
-    click_on "Add post"
-    # select "Twitter", from: "Platform"
     select "Twitter", from: "post[platform_id]"
     fill_in "Content", with: "My first post"
     click_on "Add post"
