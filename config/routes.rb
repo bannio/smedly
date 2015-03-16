@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :handles
+
   resources :topics
   resources :posts
   # resources :topics do
