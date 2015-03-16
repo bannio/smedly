@@ -24,7 +24,7 @@
     <%= f.label :content %>:
     <%= f.text_area :content %><br>
     <%= f.label :posted_on %>:
-    <%= f.date_field :posted_on %><br>
+    <%= f.date_field :posted_on, class: "date_picker"%><br>
     <%= f.submit "update post" %>
   <% end %>
 
