@@ -15,3 +15,11 @@
 //= require jquery-ui/datepicker
 //= require turbolinks
 //= require_tree .
+
+$(document).on('page:update', function() {
+$("input.date_picker").datepicker({
+        dateFormat: "yy-mm-dd",
+        changeMonth: true,
+        changeYear: true
+      });
+});
