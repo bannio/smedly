@@ -3,7 +3,7 @@
 <table>
   <tr>
     <td>Date:</td>
-    <td><%= @topic.publish_date %></td>
+    <td><%= topic_date_format(@topic.publish_date) %></td>
   </tr>
   <tr>
     <td>Summary:</td>
@@ -24,7 +24,8 @@
     <%= f.label :content %>:
     <%= f.text_area :content %><br>
     <%= f.label :posted_on %>:
-    <%= f.date_field :posted_on, class: "date_picker" %><br>
+    <%#= f.date_field :posted_on, class: "date_picker" %><br>
+    <%= f.datetime_select :posted_on, default: 1.days.from_now %><br>
     <%= f.submit "update post" %>
   <% end %>
 
@@ -36,7 +37,8 @@
     <%= f.label :content %>:
     <%= f.text_area :content %><br>
     <%= f.label :posted_on %>:
-    <%= f.date_field :posted_on, class: "date_picker" %><br> 
+    <%#= f.date_field :posted_on, class: "date_picker" %><br>
+    <%= f.datetime_select :posted_on, default: 1.days.from_now %><br>
     <%= f.submit "Add post" %>
   <% end %>
 <% end %>
@@ -50,8 +52,8 @@
       <td>Platform</td>
       <td>Content</td>
       <td>Count</td>
+      <td>Scheduled for</td>
       <td>Status</td>
-      <td>Posted on</td>
     </tr>
   </thead>
   <tbody>
@@ -61,8 +63,8 @@
       <td><%= post.platform.name if post.platform %></td>
       <td class="content"><%= post.content %></td>
       <td><%= post.content.length %></td>
+      <td><%= post_date_format(post.posted_on) %></td>
       <td><%= post.status %></td>
-      <td><%= post.posted_on %></td>
     </tr>
   <% end %>
   </tbody>
