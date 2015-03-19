@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150319112923) do
+ActiveRecord::Schema.define(version: 20150319185528) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,16 @@ ActiveRecord::Schema.define(version: 20150319112923) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "post_handles", force: :cascade do |t|
+    t.integer  "post_id"
+    t.integer  "handle_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "post_handles", ["handle_id"], name: "index_post_handles_on_handle_id", using: :btree
+  add_index "post_handles", ["post_id"], name: "index_post_handles_on_post_id", using: :btree
 
   create_table "posts", force: :cascade do |t|
     t.integer  "topic_id"
@@ -59,5 +69,7 @@ ActiveRecord::Schema.define(version: 20150319112923) do
     t.integer  "status",       default: 0
   end
 
+  add_foreign_key "post_handles", "handles"
+  add_foreign_key "post_handles", "posts"
   add_foreign_key "posts", "topics"
 end

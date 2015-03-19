@@ -1,6 +1,7 @@
 class Post < ActiveRecord::Base
   belongs_to :topic
   belongs_to :platform
+  has_many :handles, through: :post_handles
 
   enum status: [:draft, :final, :posted]
 
