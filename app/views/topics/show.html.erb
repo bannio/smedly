@@ -25,7 +25,7 @@
     <%= f.text_area :content %><br>
     <%= f.label :posted_on %>:
     <%#= f.date_field :posted_on, class: "date_picker" %><br>
-    <%= f.datetime_select :posted_on, default: 1.days.from_now %><br>
+    <%= f.datetime_select :posted_on, default: post_date_default %><br>
     <%= f.submit "update post" %>
   <% end %>
 
@@ -38,7 +38,7 @@
     <%= f.text_area :content %><br>
     <%= f.label :posted_on %>:
     <%#= f.date_field :posted_on, class: "date_picker" %><br>
-    <%= f.datetime_select :posted_on, default: 1.days.from_now %><br>
+    <%= f.datetime_select :posted_on, default: post_date_default %><br>
     <%= f.submit "Add post" %>
   <% end %>
 <% end %>
@@ -63,7 +63,7 @@
       <td><%= post.platform.name if post.platform %></td>
       <td class="content"><%= post.content %></td>
       <td><%= post.content.length %></td>
-      <td><%= post_date_format(post.posted_on) %></td>
+      <td><%= post_date_format(post.posted_on) if post.posted_on %></td>
       <td><%= post.status %></td>
     </tr>
   <% end %>

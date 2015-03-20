@@ -5,6 +5,10 @@ module TopicsHelper
   end
 
   def post_date_format(date)
-    date.strftime("%a #{date.day.ordinalize} %B %Y at %H:%M")
+    date.strftime("%a %e %B %Y at %H:%M")
+  end
+
+  def post_date_default
+    1.days.from_now.change(hour: 12, min: 03)
   end
 end
