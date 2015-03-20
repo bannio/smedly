@@ -1,4 +1,4 @@
-class CreatePost
+class AddHandlesToPost
 
   def initialize(post)
     @post = post
@@ -9,6 +9,6 @@ class CreatePost
     handles.each do |handle|
       @post.handles << Handle.find_or_create_by(name: handle)
     end
-    post
+    @post
   end
 end
