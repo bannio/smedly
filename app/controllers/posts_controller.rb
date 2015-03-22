@@ -5,6 +5,15 @@ class PostsController < ApplicationController
   #   @post = @topic.posts.build
   # end
 
+  def index
+    @posts = Post.final
+    respond_to do |format|
+      format.csv {
+        send_data Post.to_csv(@posts), filename: 'hoottweets.csv' unless @posts.empty?
+      }
+    end
+  end
+
   def edit
     @post = Post.find(params[:id])
     @topic = @post.topic
