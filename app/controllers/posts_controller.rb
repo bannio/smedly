@@ -5,6 +5,15 @@ class PostsController < ApplicationController
   #   @post = @topic.posts.build
   # end
 
+  def index
+    @posts = Post.final
+    respond_to do |format|
+      format.csv {
+        send_data Post.to_csv(@posts), filename: 'hoottweets.csv' unless @posts.empty?
+      }
+    end
+  end
+
   def edit
     @post = Post.find(params[:id])
     @topic = @post.topic
@@ -37,6 +46,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:content, :posted_on, :platform_id, :topic_id)
+    params.require(:post).permit(:content, :posted_on, :platform_id, :topic_id, :url, :status)
   end
 end

@@ -4,9 +4,12 @@
   <%= f.label :platform %>
   <%= f.collection_select(:platform_id, Platform.all, :id, :name) %><br>
   <%= f.label :content %>:
-  <%= f.text_area :content %><br>
+  <%= f.text_area :content, cols: 40, rows: 4 %><br>
+  <%= f.label :url %>
+  <%= f.text_field :url %><br>
   <%= f.label :posted_on %>:
-  <%#= f.date_field :posted_on, class: "date_picker" %><br>
+  <%#= f.date_field :posted_on, class: "date_picker" %>
   <%= f.datetime_select :posted_on, default: post_date_default %><br>
+  <%= f.select(:status, Post.statuses.keys.map {|status| [status.titleize,status]}) %><br>
   <%= f.submit %>
   <% end %>
