@@ -12,4 +12,16 @@ class Post < ActiveRecord::Base
     self.content.split(' ').select{ |w| w =~ /\A@./ }
   end
 
+  def self.to_csv(options = {}, posts)
+    CSV.generate(options) do |csv|
+      posts.each do |post|
+        row = [hoot_date_format(post.posted_on), post.content]
+        csv << row
+      end
+    end
+  end
+
+  def self.hoot_date_format(date)
+    date.strftime("%m/%d/%y %H:%M")
+  end
 end

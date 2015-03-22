@@ -13,12 +13,15 @@ RSpec.describe Post, type: :model do
   end
 
   describe "CSV export" do
-    let(:topic){ Topic.create(name: "Topic with posts") }
-    let(:post){ Post.new(content: "Ready to extract", topic_id: topic.id,
-      posted_on: 1.days.from_now.change(hour: 12, min: 05)) }
+    before do
+      post = FactoryGirl.create(:post, content: 'Ready to extract http://test@example.com/',
+      posted_on: 1.days.from_now.change(hour: 12, min: 05))
+    end
+
     it "generates a CSV file in Hootsuite format" do
-      csv = post.to_csv
-      expect(csv).to eq "#{1.days.from_now.change(hour: 12, min: 05)},'Ready to extract'"
+      posts = Post.all
+      csv = Post.to_csv(posts)
+      expect(csv).to eq "#{1.days.from_now.change(hour: 12, min: 05).strftime("%m/%d/%y %H:%M")},Ready to extract\n"
     end
     it "sets the status to 'extracted'" do
 
