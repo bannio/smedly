@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :post do
-    topic nil
+    topic
     content "MyText"
     posted_on Date.today
     status 0

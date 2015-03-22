@@ -8,7 +8,7 @@ class Post < ActiveRecord::Base
 
   validates_presence_of :topic_id, :content
 
-  def handles_in
+  def handles_in_post
     self.content.split(' ').select{ |w| w =~ /\A@./ }
   end
 

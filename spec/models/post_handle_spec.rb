@@ -1,5 +1,5 @@
 require 'rails_helper'
 
 RSpec.describe PostHandle, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  pending "awaiting something useful to test"
 end

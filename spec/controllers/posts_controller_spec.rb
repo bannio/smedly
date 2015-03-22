@@ -35,4 +35,28 @@ RSpec.describe PostsController, type: :controller do
       expect(response).to render_template('topics/show')
     end
   end
+
+  describe "PATCH update" do
+    let(:post) { FactoryGirl.create(:post, topic: topic) }
+
+    it "redirects to @topic" do
+      allow(AddHandlesToPost).to receive_message_chain(:new, :build).and_return(post)
+      patch :update, id: post.id, post: {content: "test update", topic_id: topic.id}
+      expect(response).to redirect_to(topic)
+    end
+
+    it "calls AddHandlersToPost" do
+      allow(AddHandlesToPost).to receive_message_chain(:new, :build).and_return(post)
+      expect(AddHandlesToPost).to receive(:new)
+      patch :update, id: post.id, post: {content: "test update", topic_id: topic.id}
+    end
+
+    it "renders topic on failure" do
+      allow(AddHandlesToPost).to receive_message_chain(:new, :build).and_return(post)
+      allow(post).to receive(:valid?).and_return(false)
+      patch :update, id: post.id, post: {content: "", topic_id: topic.id}
+      # expect(assigns(:post)).to_not be_valid
+      expect(response).to render_template('topics/show')
+    end
+  end
 end

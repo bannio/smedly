@@ -14,7 +14,9 @@ class PostsController < ApplicationController
   def update
     @topic = Topic.find(params[:post][:topic_id])
     @post = Post.find(params[:id])
-    if @post.update(post_params)
+    @post.update(post_params)
+    @post = AddHandlesToPost.new(@post).build
+    if @post.valid?
       redirect_to @topic
     else
       render 'topics/show'
@@ -24,6 +26,7 @@ class PostsController < ApplicationController
   def create
     @topic = Topic.find(params[:post][:topic_id])
     @post = @topic.posts.build(post_params)
+    @post = AddHandlesToPost.new(@post).build
     if @post.save
       redirect_to @topic
     else

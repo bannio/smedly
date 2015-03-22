@@ -9,6 +9,12 @@ module TopicsHelper
   end
 
   def post_date_default
-    1.days.from_now.change(hour: 12, min: 03)
+    # Hootsuite requires times to end in 0 or 5
+    1.days.from_now.change(hour: 12, min: 05)
+  end
+
+  def formatted_handles(handles)
+    # create a string from an array of handle names
+    list = handles.join(" ")
   end
 end
