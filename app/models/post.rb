@@ -15,13 +15,21 @@ class Post < ActiveRecord::Base
   def self.to_csv(options = {}, posts)
     CSV.generate(options) do |csv|
       posts.each do |post|
-        row = [hoot_date_format(post.posted_on), post.content]
+        row = [hoot_date_format(post.posted_on), post.content, post.url]
         csv << row
       end
     end
   end
 
   def self.hoot_date_format(date)
-    date.strftime("%m/%d/%y %H:%M")
+    date.strftime("%m/%d/%Y %H:%M")
+  end
+
+  def set_status_to_posted
+    self.status = Post.statuses[:posted]
+  end
+
+  def set_status_to_final
+    self.status = Post.statuses[:final]
   end
 end
