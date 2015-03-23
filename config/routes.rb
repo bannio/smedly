@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
 
-  get 'extract/new'
-
-  get 'extract/create'
-
   resources :topics
-  resources :posts
+  resources :posts do
+    collection do
+      get 'extract'
+    end
+  end
   resources :handles
   
   # resources :topics do

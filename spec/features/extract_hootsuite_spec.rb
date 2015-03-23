@@ -13,10 +13,10 @@ describe "Extracting files for Hootsuite" do
   
   it "allows you to choose the platform" do
     visit topic_path(@topic)
-    click_on 'Extract for Hootsuite'
     select "Twitter-GIS", from: "extract[platform_id]"
-    click_on "Create extract"
-    expect(page).to have_selector("")
+    # click_on 'Extract for Hootsuite'
+    # click_on "Create extract"
+    expect(page).to have_selector("#handles")
     
   end
 
