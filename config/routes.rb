@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'extract/new'
+
+  get 'extract/create'
+
   resources :topics
   resources :posts
   resources :handles

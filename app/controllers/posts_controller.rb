@@ -6,6 +6,7 @@ class PostsController < ApplicationController
   # end
 
   def index
+    # temporary measure to test exports
     @posts = Post.final
     respond_to do |format|
       format.csv {
