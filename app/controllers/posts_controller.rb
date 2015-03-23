@@ -5,13 +5,13 @@ class PostsController < ApplicationController
   #   @post = @topic.posts.build
   # end
 
-  def index
-    # temporary measure to test exports
-    @posts = Post.final
-    respond_to do |format|
-      format.csv {
-        send_data Post.to_csv(@posts), filename: 'hoottweets.csv' unless @posts.empty?
-      }
+  def extract
+    @topic = Topic.find(params[:topic])
+    @posts = Post.final.where(platform_id: params[:platform][:id], topic_id: @topic.id)
+    if @posts.empty?
+      render 'topics/show'
+    else
+      send_data Post.to_csv(@posts), filename: 'hoottweets.csv'
     end
   end
 

@@ -1,5 +1,5 @@
 <h1><%= @topic.name %></h1>
-
+<section id="topic-section">
 <table>
   <tr>
     <td>Date:</td>
@@ -13,6 +13,14 @@
 
 <%= link_to "Edit", edit_topic_path(@topic) %><br>
 <%= link_to "Back to Topic list", topics_path %>
+
+<%= form_tag({controller: "posts", action: "extract"}, method: "get") do %>
+  <%= hidden_field_tag 'topic', @topic.id %>
+  <%= collection_radio_buttons(:platform, :id, Platform.all, :id, :name) %>
+  <%= submit_tag("Extract for Hootsuite") %>
+<% end %>
+
+</section>
 
 <section id="handles-section">
 <h2>Handles used in this topic</h2>
