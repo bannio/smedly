@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
 
   resources :topics
-  resources :posts
+  resources :posts do
+    collection do
+      get 'extract'
+    end
+  end
   resources :handles
   
   # resources :topics do

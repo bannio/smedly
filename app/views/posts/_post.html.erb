@@ -1,9 +1,9 @@
 <tr class="post-row" id="<%= dom_id(post) %>">
-  <td><%= link_to "Edit", edit_post_path(post) %></td>
   <td><%= post.platform.name if post.platform %></td>
   <td class="content"><%= post.content %></td>
   <td><%= post.content.length %></td>
-  <td><%= link_to post.url, post.url, target: '_blank' if post.url %></td>
+  <td><%= link_to post.url, post.url, target: '_blank' unless post.url.blank? %></td>
   <td><%= post_date_format(post.posted_on) if post.posted_on %></td>
   <td><%= post.status %></td>
+  <td><%= link_to "Edit", edit_post_path(post) %></td>
 </tr>

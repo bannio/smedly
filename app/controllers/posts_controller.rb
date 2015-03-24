@@ -5,12 +5,15 @@ class PostsController < ApplicationController
   #   @post = @topic.posts.build
   # end
 
-  def index
-    @posts = Post.final
-    respond_to do |format|
-      format.csv {
-        send_data Post.to_csv(@posts), filename: 'hoottweets.csv' unless @posts.empty?
-      }
+  def extract
+    @topic = Topic.find(params[:topic])
+    @posts = Post.final.where(platform_id: params[:platform][:id], topic_id: @topic.id)
+    platform = Platform.find(params[:platform][:id]).name
+    if @posts.empty?
+      flash[:alert] = "No final posts found for #{platform}"
+      redirect_to @topic
+    else
+      send_data Post.to_csv(@posts), filename: 'hoottweets.csv'
     end
   end
 
@@ -23,6 +26,7 @@ class PostsController < ApplicationController
   def update
     @topic = Topic.find(params[:post][:topic_id])
     @post = Post.find(params[:id])
+    params[:post][:url] = full_url(params[:post][:url])
     @post.update(post_params)
     @post = AddHandlesToPost.new(@post).build
     if @post.valid?
@@ -34,11 +38,13 @@ class PostsController < ApplicationController
 
   def create
     @topic = Topic.find(params[:post][:topic_id])
+    params[:post][:url] = full_url(params[:post][:url])
     @post = @topic.posts.build(post_params)
     @post = AddHandlesToPost.new(@post).build
     if @post.save
       redirect_to @topic
     else
+      flash.now[:alert] = "#{@post.errors.full_messages.first}"
       render 'topics/show'
     end
   end
