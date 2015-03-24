@@ -7,9 +7,12 @@ describe "Extracting files for Hootsuite" do
     @wr = FactoryGirl.create(:platform, name: "Twitter-WR")
     @li = FactoryGirl.create(:platform, name: "LinkedIn")
     @topic = FactoryGirl.create(:topic)
-    @draft_post = FactoryGirl.create(:post, platform_id: @gis.id, content: "draft post")
-    @gis_final_post = FactoryGirl.create(:post, platform_id: @gis.id, content: "final post", status: Post.statuses[:final])
-    @wr_final_post = FactoryGirl.create(:post, platform_id: @wr.id, content: "final post", status: Post.statuses[:final])
+    @draft_post = FactoryGirl.create(:post, platform_id: @gis.id,
+      content: "draft post", topic_id: @topic.id)
+    @gis_final_post = FactoryGirl.create(:post, platform_id: @gis.id,
+      content: "final post", status: Post.statuses[:final], topic_id: @topic.id)
+    @wr_final_post = FactoryGirl.create(:post, platform_id: @wr.id,
+      content: "final post", status: Post.statuses[:final], topic_id: @topic.id)
   end
   
   it "allows you to choose the platform" do

@@ -9,8 +9,8 @@
   </tr>
 </table>
 
-<%= button_to "Edit Topic", edit_topic_path(@topic), display: :inline %>
-<%= button_to "Back to Topic list", topics_path %>
+<%= button_to "Edit Topic", edit_topic_path(@topic), method: :get %>
+<%= button_to "Back to Topic list", topics_path, method: :get %>
 
 <fieldset id="hootsuite-radio-set">
 <legend>Hoot Suite file extract</legend>
@@ -41,7 +41,6 @@
     <%= render partial: 'posts/form', locals: {post: Post.new(topic_id: @topic.id)} %>
   <% end %>
 </fieldset>
-<hr>
 
 <table id="posts-table">
   <thead>
@@ -57,7 +56,7 @@
   </thead>
   <tbody id="post-table-body">
   <%# @topic.posts.each do |post| %>
-    <%= render @topic.posts.includes(:platform) %>
+    <%= render @topic.posts.includes(:platform).order(:platform_id, :posted_on) %>
   <%# end %>
   </tbody>
 </table>

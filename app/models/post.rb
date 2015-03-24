@@ -1,4 +1,5 @@
 class Post < ActiveRecord::Base
+
   belongs_to :topic
   belongs_to :platform
   has_many :post_handles

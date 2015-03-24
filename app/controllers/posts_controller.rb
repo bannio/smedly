@@ -26,6 +26,7 @@ class PostsController < ApplicationController
   def update
     @topic = Topic.find(params[:post][:topic_id])
     @post = Post.find(params[:id])
+    params[:post][:url] = full_url(params[:post][:url])
     @post.update(post_params)
     @post = AddHandlesToPost.new(@post).build
     if @post.valid?
@@ -37,11 +38,13 @@ class PostsController < ApplicationController
 
   def create
     @topic = Topic.find(params[:post][:topic_id])
+    params[:post][:url] = full_url(params[:post][:url])
     @post = @topic.posts.build(post_params)
     @post = AddHandlesToPost.new(@post).build
     if @post.save
       redirect_to @topic
     else
+      flash.now[:alert] = "#{@post.errors.full_messages.first}"
       render 'topics/show'
     end
   end
