@@ -8,8 +8,10 @@ class PostsController < ApplicationController
   def extract
     @topic = Topic.find(params[:topic])
     @posts = Post.final.where(platform_id: params[:platform][:id], topic_id: @topic.id)
+    platform = Platform.find(params[:platform][:id]).name
     if @posts.empty?
-      render 'topics/show'
+      flash[:alert] = "No final posts found for #{platform}"
+      redirect_to @topic
     else
       send_data Post.to_csv(@posts), filename: 'hoottweets.csv'
     end

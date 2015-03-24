@@ -2,54 +2,57 @@
 <section id="topic-section">
 <table>
   <tr>
-    <td>Date:</td>
-    <td><%= topic_date_format(@topic.publish_date) %></td>
+    <td><h3><%= topic_date_format(@topic.publish_date) %></h3></td>
   </tr>
   <tr>
-    <td>Summary:</td>
     <td><%= simple_format("#{@topic.summary}") %></td>
   </tr>
 </table>
 
-<%= link_to "Edit", edit_topic_path(@topic) %><br>
-<%= link_to "Back to Topic list", topics_path %>
+<%= button_to "Edit Topic", edit_topic_path(@topic), display: :inline %>
+<%= button_to "Back to Topic list", topics_path %>
 
-<%= form_tag({controller: "posts", action: "extract"}, method: "get") do %>
-  <%= hidden_field_tag 'topic', @topic.id %>
-  <%= collection_radio_buttons(:platform, :id, Platform.all, :id, :name) %>
-  <%= submit_tag("Extract for Hootsuite") %>
-<% end %>
-
+<fieldset id="hootsuite-radio-set">
+<legend>Hoot Suite file extract</legend>
+  <%= form_tag({controller: "posts", action: "extract"}, method: "get") do %>
+    <%= hidden_field_tag 'topic', @topic.id %>
+    <%= collection_radio_buttons(:platform, :id, Platform.all, :id, :name) %>
+    <%= submit_tag("Extract for Hootsuite") %>
+  <% end %>
+</fieldset>
 </section>
 
 <section id="handles-section">
-<h2>Handles used in this topic</h2>
-<div id="handles">
-    <%= formatted_handles(@topic.handles) %>
-</div>
-<hr>
+<fieldset>
+<legend>Handles used in this topic</legend>
+  <div id="handles">
+      <%= formatted_handles(@topic.handles) %>
+  </div>
+</fieldset>
+<!-- <hr> -->
 </section>
 
 <section id="posts-section">
-
-<% if @post %>
-  <%= render partial: 'posts/form', locals: {post: @post} %>
-<% else %>
-  <%= render partial: 'posts/form', locals: {post: Post.new(topic_id: @topic.id)} %>
-<% end %>
-
+<fieldset id="post-form">
+<legend>Post editor</legend>
+  <% if @post %>
+    <%= render partial: 'posts/form', locals: {post: @post} %>
+  <% else %>
+    <%= render partial: 'posts/form', locals: {post: Post.new(topic_id: @topic.id)} %>
+  <% end %>
+</fieldset>
 <hr>
 
 <table id="posts-table">
   <thead>
     <tr>
-      <td></td>
       <td>Platform</td>
       <td>Content</td>
       <td>Count</td>
       <td>URL</td>
       <td>Scheduled for</td>
       <td>Status</td>
+      <td></td>
     </tr>
   </thead>
   <tbody id="post-table-body">
