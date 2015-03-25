@@ -6,6 +6,12 @@ RSpec.describe Post, type: :model do
     expect(post.draft?).to be_truthy
   end
 
+  it "requires a content" do
+    post = Post.new(content: "")
+    post.valid?
+    expect(post.errors[:content]).to eq ["can't be blank"]
+  end
+
   it "can extract handles from content strings" do
     tweet = "My test @my_handle tweet @another too"
     post = Post.new(content: tweet)

@@ -17,6 +17,7 @@ class TopicsController < ApplicationController
     if @topic.save
       redirect_to topics_path, notice: "Topic created!"
     else
+      flash[:alert] = "#{@topic.errors.full_messages.first}"
       render :new
     end
   end
