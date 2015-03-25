@@ -1,13 +1,17 @@
 <h1><%= @topic.name %></h1>
 <section id="topic-section">
-<table>
+<fieldset id="summary-set">
+  <legend><%= topic_date_format(@topic.publish_date) %></legend>
+  <%= simple_format("#{@topic.summary}") %>
+</fieldset>
+<!-- <table>
   <tr>
     <td><h3><%= topic_date_format(@topic.publish_date) %></h3></td>
   </tr>
   <tr>
     <td><%= simple_format("#{@topic.summary}") %></td>
   </tr>
-</table>
+</table> -->
 <div class="button-bar">
   <%= link_to "Edit Topic", edit_topic_path(@topic), method: :get, class: "button" %>
   <%= link_to "Back to Topic list", topics_path, method: :get, class: "button" %>
@@ -26,7 +30,9 @@
 <fieldset>
 <legend>Handles used in this topic</legend>
   <div id="handles">
-      <%= formatted_handles(@topic.handles) %>
+    <% @topic.handles.each do |hndl| %>
+      <%= link_to hndl, "https://twitter.com/#{hndl}", target: '_blank' %>
+    <% end -%>
   </div>
 </fieldset>
 <!-- <hr> -->

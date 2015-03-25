@@ -24,12 +24,12 @@ module TopicsHelper
     1.days.from_now.change(hour: 12, min: 05)
   end
 
-  def formatted_handles(handles)
-    # create a string from an array of handle names
-    list = handles.join(" ")
-  end
+  # def formatted_handles(handles)
+  #   create a string from an array of handle names
+  #   list = handles.join(" ")
+  # end
 
-  def background_class(num)
+  def count_background(num)
     css = ""
     r = 94..116
     if r.include?(num)
@@ -38,5 +38,13 @@ module TopicsHelper
       css = "red-background"
     end
     css
+  end
+
+  def platform_background(post)
+    if post.platform
+      post.platform.name.downcase.gsub(" ","")
+    else
+      "no-platform"
+    end
   end
 end

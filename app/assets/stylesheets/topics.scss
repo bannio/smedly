@@ -113,7 +113,18 @@ td.facebook-gis {
 td.facebook-wr {
   background: #89c35c;
 }
-
+td.draft {
+  background: #ffff00;
+}
+td.final {
+  background: #ffa500;
+}
+td.posted {
+  background: #99c6ae;
+}
+.no-platform {
+  background: #ffff00;
+}
 .amber-background {
   background: #f87431;
 }
