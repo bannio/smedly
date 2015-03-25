@@ -9,7 +9,10 @@ describe "adding posts to topics" do
 
   it "allows a user to add a post to topic" do
     visit topic_path(topic)
-    select "Twitter", from: "post[platform_id]"
+    within "#post-form" do
+      choose "Twitter"
+    end
+    # select "Twitter", from: "post[platform_id]"
     fill_in "post_content", with: "My first post"
     click_on "Create Post"
     post = Post.find_by_content("My first post")
@@ -18,7 +21,10 @@ describe "adding posts to topics" do
 
   it "shows handles used in the posts" do
     visit topic_path(topic)
-    select "Twitter", from: "post[platform_id]"
+    within "#post-form" do
+      choose "Twitter"
+    end
+    # select "Twitter", from: "post[platform_id]"
     fill_in "post_content", with: "My first post with @first_handle"
     click_on "Create Post"
     post = Post.find_by_content("My first post with @first_handle")

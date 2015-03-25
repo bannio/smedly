@@ -14,7 +14,7 @@ describe "Extracting files for Hootsuite" do
     @wr_final_post = FactoryGirl.create(:post, platform_id: @wr.id,
       content: "final post", status: Post.statuses[:final], topic_id: @topic.id)
   end
-  
+
   it "allows you to choose the platform" do
     visit topic_path(@topic)
     within "#hootsuite-radio-set" do
@@ -26,13 +26,15 @@ describe "Extracting files for Hootsuite" do
 
   it "only selects posts for the chosen platform" do
     visit topic_path(@topic)
-    choose "LinkedIn"
+    within "#hootsuite-radio-set" do
+      choose "LinkedIn"
+    end
     click_on "Extract for Hootsuite"
     expect(page).to have_selector(".flash_alert", text: "No final posts found for LinkedIn")
   end
 
   it "selects only final posts" do
-    
+
   end
 
 

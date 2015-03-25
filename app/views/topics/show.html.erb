@@ -8,16 +8,16 @@
     <td><%= simple_format("#{@topic.summary}") %></td>
   </tr>
 </table>
-
-<%= button_to "Edit Topic", edit_topic_path(@topic), method: :get %>
-<%= button_to "Back to Topic list", topics_path, method: :get %>
-
+<div class="button-bar">
+  <%= link_to "Edit Topic", edit_topic_path(@topic), method: :get, class: "button" %>
+  <%= link_to "Back to Topic list", topics_path, method: :get, class: "button" %>
+</div>
 <fieldset id="hootsuite-radio-set">
 <legend>Hoot Suite file extract</legend>
   <%= form_tag({controller: "posts", action: "extract"}, method: "get") do %>
     <%= hidden_field_tag 'topic', @topic.id %>
     <%= collection_radio_buttons(:platform, :id, Platform.all, :id, :name) %>
-    <%= submit_tag("Extract for Hootsuite") %>
+    <%= submit_tag "Extract for Hootsuite", class: "button" %>
   <% end %>
 </fieldset>
 </section>
@@ -41,9 +41,9 @@
     <%= render partial: 'posts/form', locals: {post: Post.new(topic_id: @topic.id)} %>
   <% end %>
 </fieldset>
-
+<br>
 <table id="posts-table">
-  <thead>
+  <!-- <thead>
     <tr>
       <td>Platform</td>
       <td>Content</td>
@@ -53,7 +53,7 @@
       <td>Status</td>
       <td></td>
     </tr>
-  </thead>
+  </thead> -->
   <tbody id="post-table-body">
   <%# @topic.posts.each do |post| %>
     <%= render @topic.posts.includes(:platform).order(:platform_id, :posted_on) %>

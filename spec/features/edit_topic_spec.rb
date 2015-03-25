@@ -7,7 +7,7 @@ describe "editing a topic" do
   it "allows a user to edit a topic" do
     visit topic_path(topic)
     click_on "Edit Topic"
-    fill_in "Name", with: "Changed name"
+    fill_in "topic[name]", with: "Changed name"
     click_on "Update Topic"
     visit topics_path
     @topic = Topic.find_by_name("Changed name")
@@ -17,7 +17,7 @@ describe "editing a topic" do
   it "allows you to cancel" do
     visit topic_path(topic)
     click_on "Edit Topic"
-    fill_in "Name", with: "Changed name"
+    fill_in "topic[name]", with: "Changed name"
     click_on "Cancel"
     visit topics_path
     @topic = Topic.find_by_name("original name")
