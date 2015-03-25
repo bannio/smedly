@@ -13,7 +13,7 @@ class PostsController < ApplicationController
       flash[:alert] = "No final posts found for #{platform}"
       redirect_to @topic
     else
-      send_data Post.to_csv(@posts), filename: 'hoottweets.csv'
+      send_data Post.to_csv(@posts), filename: "hoottweets-#{platform.downcase}-#{@topic.name.downcase.slice(0,15).gsub(" ","-")}.csv"
     end
   end
 

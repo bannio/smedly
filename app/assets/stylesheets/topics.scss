@@ -54,7 +54,10 @@ fieldset legend {
 }
 
 .button {
-   border-top: 1px solid #357ec7;
+   border-top: 0px solid #357ec7;
+   border-right: 0px;
+   border-bottom: 0px;
+   border-left: 0px;
    background: #357ec7;
    // background: -webkit-gradient(linear, left top, left bottom, from(#3e779d), to(#65a9d7));
    // background: -webkit-linear-gradient(top, #3e779d, #65a9d7);
@@ -77,6 +80,8 @@ fieldset legend {
   vertical-align: middle;
   margin-top: 10px;
   margin-right: 10px;
+  margin-bottom: 10px;
+  margin-left: 10px;
   display: inline-block
    }
 .button:hover {
