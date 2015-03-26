@@ -7,4 +7,5 @@
   <td><%= post_day_format(post.posted_on) if post.posted_on %></td>
   <td class="<%= post.status %>"><%= post.status %></td>
   <td><%= link_to "Edit", edit_post_path(post) %></td>
+  <td><%= link_to "Delete", post_path(post), method: :delete, data: { confirm: "Are you sure?" } %></td>
 </tr>
