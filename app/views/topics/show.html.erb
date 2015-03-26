@@ -2,16 +2,11 @@
 <section id="topic-section">
 <fieldset id="summary-set">
   <legend><%= topic_date_format(@topic.publish_date) %></legend>
+  Author: <%= @topic.author %><br>
+  URL: <%= @topic.url %><br>
   <%= simple_format("#{@topic.summary}") %>
 </fieldset>
-<!-- <table>
-  <tr>
-    <td><h3><%= topic_date_format(@topic.publish_date) %></h3></td>
-  </tr>
-  <tr>
-    <td><%= simple_format("#{@topic.summary}") %></td>
-  </tr>
-</table> -->
+
 <div class="button-bar">
   <%= link_to "Edit Topic", edit_topic_path(@topic), method: :get, class: "button" %>
   <%= link_to "Back to Topic list", topics_path, method: :get, class: "button" %>

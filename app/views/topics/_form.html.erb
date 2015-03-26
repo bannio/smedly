@@ -5,6 +5,8 @@
   <%= f.text_area :summary, cols: 50, rows: 5, placeholder: "Notes and or summary ..." %><br>
   <%= f.label :publish_date %>:
   <%= f.date_field :publish_date, class: "date_picker" %><br>
+  <%= f.text_field :author, placeholder: "Author ..." %><br>
+  <%= f.text_field :url, placeholder: "url ..." %><br>
   <%= f.submit %>
 <% end %>
   <% if action_name == 'edit' %>
