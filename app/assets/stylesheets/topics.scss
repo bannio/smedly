@@ -93,7 +93,9 @@ fieldset legend {
    border-top-color: #1b435e;
    background: #1b435e;
    }
-
+tr.post-row td {
+  border-bottom:1pt solid black;
+}
 td.twitter-gis {
   background: #ffa500;
 }
