@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require jquery-ui/datepicker
 //= require turbolinks
+//= require select2
 //= require_tree .
 
 $(document).on('page:update', function() {

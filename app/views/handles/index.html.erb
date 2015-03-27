@@ -1,0 +1,23 @@
+<h1>Handles</h1>
+
+<table>
+  <thead>
+    <tr>
+      <td>Handle</td>
+      <td>Notes</td>
+      <td>Followers</td>
+      <td>Following</td>
+    </tr>
+  </thead>
+  <tbody>
+  <% @handles.each do |handle| %>
+    <tr class="handle-row" id="<%= dom_id(handle) %>">
+      <td class="name"><%= handle.name %></td>
+      <td><%= handle.notes %></td>
+      <td><%= handle.followers %></td>
+      <td><%= handle.following %></td>
+      <td><%= link_to 'view', handle_path(handle) %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

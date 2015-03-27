@@ -23,6 +23,9 @@
   border-color: #eed3d7;
   color: #b94a48;
 }
+body {
+  @import 'select2'
+}
 body, textarea, fieldset, input {
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
   font-size: 12px;

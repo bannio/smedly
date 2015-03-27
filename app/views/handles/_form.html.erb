@@ -1,0 +1,11 @@
+<%=  form_for @handle do |f| %>
+    <%= f.text_field :name %>
+    <%= f.text_field :tag_list, value: @handle.tag_list.to_s,
+      label: "Tags",
+        data: {
+          placeholder: "Enter tags",
+          saved: f.object.tags.map{|t| {id: t.name, name: t.name}}.to_json,
+          url: autocomplete_tags_path },
+     class: 'tagselect' %>
+  <%= f.submit class: "button" %>
+<% end %>

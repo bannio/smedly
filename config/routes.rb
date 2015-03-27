@@ -7,7 +7,11 @@ Rails.application.routes.draw do
     end
   end
   resources :handles
-  
+
+  get 'autocomplete_tags',
+  to: 'handles#autocomplete_tags',
+  as: 'autocomplete_tags'
+
   # resources :topics do
   #   resources :posts, only: [:index, :new, :create]
   # end

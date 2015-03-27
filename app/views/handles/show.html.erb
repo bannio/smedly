@@ -1,0 +1,14 @@
+<h1><%= @handle.name %></h1>
+
+<%= render 'form' %>
+
+<br>
+
+<%= link_to "Back to list", handles_path, class: "button" %>
+
+
+<table id="posts-table">
+  <tbody id="post-table-body">
+    <%= render @handle.posts.includes(:platform).order(:platform_id, :posted_on) %>
+  </tbody>
+</table>
