@@ -32,6 +32,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+  gem 'select2-rails'
+  gem 'acts-as-taggable-on'
 group :development do
   gem "better_errors"
 end
