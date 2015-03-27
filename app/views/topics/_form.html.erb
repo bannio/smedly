@@ -1,16 +1,17 @@
 <%= form_for @topic do |f| %>
   <%#= f.label :name %>
-  <%= f.text_field :name, placeholder: "Name ..." %><br>
+  <%= f.text_field :name, placeholder: "Name ...", size: 60 %><br>
   <%#= f.label :summary %>
-  <%= f.text_area :summary, cols: 50, rows: 5, placeholder: "Notes and or summary ..." %><br>
-  <%= f.label :publish_date %>:
-  <%= f.date_field :publish_date, class: "date_picker" %><br>
-  <%= f.text_field :author, placeholder: "Author ..." %><br>
-  <%= f.text_field :url, placeholder: "url ..." %><br>
-  <%= f.submit %>
+  <%= f.text_area :summary, size: "100x10", placeholder: "Notes and or summary ..." %><br>
+  <%#= f.label :publish_date %>
+  <%= f.date_field :publish_date, class: "date_picker", placeholder: "Publish Date" %><br>
+  <%= f.text_field :author, placeholder: "Author ...", size: 60 %><br>
+  <%= f.text_field :url, placeholder: "url ...", size: 60 %><br>
+  <%= f.select(:status, Topic.statuses.keys.map {|status| [status.titleize,status]}) %><br>
+  <%= f.submit class: "button"%>
 <% end %>
   <% if action_name == 'edit' %>
-    <%= button_to "Cancel", topic_path(@topic), method: :get %>
+    <%= button_to "Cancel", topic_path(@topic), method: :get, class: "button" %>
   <% else %>
-    <%= button_to "Cancel", topics_path, method: :get %>
+    <%= button_to "Cancel", topics_path, method: :get, class: "button" %>
   <% end %>
