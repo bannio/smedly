@@ -1,7 +1,11 @@
 class HandlesController < ApplicationController
 
   def index
-    @handles = Handle.all
+    if params[:q]
+      @handles = Handle.tagged_with(params[:q])
+    else
+      @handles = Handle.all
+    end
   end
 
   def show
