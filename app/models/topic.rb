@@ -9,8 +9,8 @@ class Topic < ActiveRecord::Base
     # return an array of unique handle names used in this topic's posts
     handles = Handle.joins(:posts).
       where('posts.topic_id = ?', self.id).
-      uniq.order(name: :asc).
-      map(&:name)
+      uniq.order(name: :asc) #.
+      # map(&:name)
   end
 
 end

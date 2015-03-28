@@ -14,6 +14,6 @@ describe Topic, type: :model do
     post = topic.posts.create(content: "post with @author and @editor handles")
     post.handles.create(name: "@author")
     post.handles.create(name: "@editor")
-    expect(topic.handles).to eq ["@author", "@editor"]
+    expect(topic.handles.map(&:name)).to eq ["@author", "@editor"]
   end
 end

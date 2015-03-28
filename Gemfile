@@ -32,6 +32,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+  gem 'select2-rails'
+  gem 'acts-as-taggable-on'
 group :development do
   gem "better_errors"
 end
@@ -50,6 +52,8 @@ group :development, :test do
   gem 'factory_girl_rails'
   # gem 'selenium-client'
   gem "selenium-webdriver" #, '~> 2.43.0'
+  gem "capybara-webkit"
+  gem 'launchy'
 end
 group :test do
   gem 'cucumber-rails', :require => false
