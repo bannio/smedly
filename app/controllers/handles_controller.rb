@@ -1,7 +1,7 @@
 class HandlesController < ApplicationController
 
   def index
-    if params[:q]
+    if params[:q] && params[:q] != ""
       @handles = Handle.tagged_with(params[:q])
     else
       @handles = Handle.all

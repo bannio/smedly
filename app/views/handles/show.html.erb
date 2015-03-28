@@ -1,10 +1,13 @@
 <h1><%= @handle.name %></h1>
-
+<fieldset>
+<legend>Edit details</legend>
 <%= render 'form' %>
-
+</fieldset>
 <br>
 
-<%= link_to "Back to list", handles_path, class: "button" %>
+<%= link_to "Handle list", handles_path, class: "button" %>
+
+<%= link_to "View Twitter Profile", "https://twitter.com/#{@handle.name}", target: '_blank', class: "button" %>
 
 
 <table id="posts-table">

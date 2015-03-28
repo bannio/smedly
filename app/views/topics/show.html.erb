@@ -1,36 +1,17 @@
 <h1><%= @topic.name %></h1>
 <section id="topic-section">
-<fieldset id="summary-set">
-  <legend><%= topic_date_format(@topic.publish_date) %></legend>
-  Author: <%= @topic.author %><br>
-  URL: <%= @topic.url %><br>
-  <%= simple_format("#{@topic.summary}") %>
-</fieldset>
-
-<div class="button-bar">
-  <%= link_to "Edit Topic", edit_topic_path(@topic), method: :get, class: "button" %>
-  <%= link_to "Back to Topic list", topics_path, method: :get, class: "button" %>
-</div>
-<fieldset id="hootsuite-radio-set">
-<legend>Hoot Suite file extract</legend>
-  <%= form_tag({controller: "posts", action: "extract"}, method: "get") do %>
-    <%= hidden_field_tag 'topic', @topic.id %>
-    <%= collection_radio_buttons(:platform, :id, Platform.all, :id, :name) %>
-    <%= submit_tag "Extract for Hootsuite", class: "button" %>
-  <% end %>
-</fieldset>
-</section>
-
-<section id="handles-section">
-<fieldset>
-<legend>Handles used in this topic</legend>
-  <div id="handles">
-    <% @topic.handles.each do |hndl| %>
-      <%= link_to hndl, "https://twitter.com/#{hndl}", target: '_blank' %>
-    <% end -%>
+  <fieldset id="summary-set">
+    <legend><%= topic_date_format(@topic.publish_date) %></legend>
+    Author: <%= @topic.author %><br>
+    URL: <%= @topic.url %><br>
+    <%= simple_format("#{@topic.summary}") %>
+  <div class="button-bar">
+    <%= link_to "Edit Topic", edit_topic_path(@topic), method: :get, class: "button" %>
+    <%= link_to "Back to Topic list", topics_path, method: :get, class: "button" %>
   </div>
-</fieldset>
+  </fieldset>
 </section>
+
 
 <section id="posts-section">
 <fieldset id="post-form">
@@ -48,4 +29,23 @@
   </tbody>
 </table>
 
+<section id="handles-section">
+<fieldset>
+<legend>Handles used in this topic</legend>
+  <div id="handles">
+    <% @topic.handles.each do |handle| %>
+      <%= link_to handle.name, handle_path(handle), target: '_blank' %>
+    <% end -%>
+  </div>
+</fieldset>
+</section>
+
+<fieldset id="hootsuite-radio-set">
+<legend>Hoot Suite file extract</legend>
+  <%= form_tag({controller: "posts", action: "extract"}, method: "get") do %>
+    <%= hidden_field_tag 'topic', @topic.id %>
+    <%= collection_radio_buttons(:platform, :id, Platform.all, :id, :name) %>
+    <%= submit_tag "Extract for Hootsuite", class: "button" %>
+  <% end %>
+</fieldset>
 </section>

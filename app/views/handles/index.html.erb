@@ -3,7 +3,7 @@
 <%= form_tag({controller: "handles", action: "index"}, method: "get") do %>
   <%= label_tag(:q, "Search for:") %>
   <%= text_field_tag(:q,nil, placeholder: "tag") %>
-  <%= submit_tag("Search") %>
+  <%= submit_tag "Search", class: "button" %>
 <% end %>
 
 <table>
