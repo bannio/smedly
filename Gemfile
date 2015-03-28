@@ -52,6 +52,8 @@ group :development, :test do
   gem 'factory_girl_rails'
   # gem 'selenium-client'
   gem "selenium-webdriver" #, '~> 2.43.0'
+  gem "capybara-webkit"
+  gem 'launchy'
 end
 group :test do
   gem 'cucumber-rails', :require => false
