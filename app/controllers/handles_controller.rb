@@ -23,9 +23,12 @@ class HandlesController < ApplicationController
 
   def update
     @handle = Handle.find(params[:id])
-    @handle.tag_list = params[:handle][:tag_list]
-    # @handle.tag_list.add(params[:handle][:tag_list], parse: true)
+    @handle.tag_list = params[:handle][:tag_list] # replaces existing tags
     @handle.name = params[:handle][:name]
+    @handle.notes = params[:handle][:notes]
+    @handle.followers = params[:handle][:followers]
+    @handle.following = params[:handle][:following]
+
     @handle.save
     redirect_to @handle
   end
@@ -33,6 +36,6 @@ class HandlesController < ApplicationController
   private
 
   def handle_params
-    params.require(:handle).permit(:name, :notes, :followers, :following, tag_list: [])
+    params.require(:handle).permit(:name, :notes, :followers, :following, :tag_list)
   end
 end

@@ -1,11 +1,14 @@
 <%=  form_for @handle do |f| %>
-    <%= f.text_field :name %>
-    <%= f.text_field :tag_list, value: @handle.tag_list.to_s,
+    <p><%= f.text_field :name, placeholder: "@name ..." %></p>
+    <p><%= f.text_area :notes, placeholder: "Notes ...", cols: 50, rows: 5 %></p>
+    <p><%= f.label "Followers (count) " %> <%= f.text_field :followers, size: 9 %></p>
+    <p><%= f.label "Following us? (yes/no) " %> <%= f.text_field :following , size: 5 %></p>
+    <p><%= f.text_field :tag_list, value: @handle.tag_list.to_s,
       label: "Tags",
         data: {
           placeholder: "Enter tags",
           saved: f.object.tags.map{|t| {id: t.name, name: t.name}}.to_json,
           url: autocomplete_tags_path },
-     class: 'tagselect' %>
+     class: 'tagselect' %></p>
   <%= f.submit class: "button" %>
 <% end %>
