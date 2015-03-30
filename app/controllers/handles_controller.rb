@@ -2,14 +2,32 @@ class HandlesController < ApplicationController
 
   def index
     if params[:q] && params[:q] != ""
-      @handles = Handle.tagged_with(params[:q])
+      @handles = Handle.tagged_with(params[:q]).order(:name)
     else
-      @handles = Handle.all
+      @handles = Handle.all.order(:name)
     end
   end
 
   def show
     @handle = Handle.find(params[:id])
+  end
+
+  def new
+    @handle = Handle.new
+  end
+
+  def create
+    @handle = Handle.new
+    @handle.tag_list = params[:handle][:tag_list] # replaces existing tags
+    @handle.name = params[:handle][:name]
+    @handle.notes = params[:handle][:notes]
+    @handle.followers = params[:handle][:followers]
+    @handle.following = params[:handle][:following]
+    if @handle.save
+      redirect_to handles_path
+    else
+      render new
+    end
   end
 
   def autocomplete_tags
@@ -31,6 +49,12 @@ class HandlesController < ApplicationController
 
     @handle.save
     redirect_to @handle
+  end
+
+  def destroy
+    @handle = Handle.find(params[:id])
+    @handle.destroy
+    redirect_to handles_path
   end
 
   private

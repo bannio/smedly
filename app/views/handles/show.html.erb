@@ -9,6 +9,7 @@
 
 <%= link_to "View Twitter Profile", "https://twitter.com/#{@handle.name}", target: '_blank', class: "button" %>
 
+<%= link_to "Delete", handle_path(@handle), method: :delete, data: { confirm: "Are you sure?" }, class: "button" %>
 
 <table id="posts-table">
   <tbody id="post-table-body">
