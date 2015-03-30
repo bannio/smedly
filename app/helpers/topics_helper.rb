@@ -24,6 +24,26 @@ module TopicsHelper
     1.days.from_now.change(hour: 12, min: 05)
   end
 
+  def content_length(post)
+    if post.content
+      post.content.length 
+    else
+      0
+    end
+  end
+
+  def count_colour(post)
+    count = post.content.length if post.content
+    return "black" unless count
+    if count >= 116
+      "red"
+    elsif count >= 94
+      "orange"
+    else
+      "black"
+    end  
+  end
+
   # def formatted_handles(handles)
   #   create a string from an array of handle names
   #   list = handles.join(" ")
