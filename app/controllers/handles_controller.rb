@@ -2,9 +2,9 @@ class HandlesController < ApplicationController
 
   def index
     if params[:q] && params[:q] != ""
-      @handles = Handle.tagged_with(params[:q]).order(:name)
+      @handles = Handle.tagged_with(params[:q]).order("LOWER(name)")
     else
-      @handles = Handle.all.order(:name)
+      @handles = Handle.all.order("LOWER(name)")
     end
   end
 
