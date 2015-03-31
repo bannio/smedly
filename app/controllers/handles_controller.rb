@@ -3,7 +3,7 @@ class HandlesController < ApplicationController
   def index
     if params[:q] && params[:q] != ""
       tags = params[:q].split(",")
-      if params[:type] == "Or"
+      if params[:type] == "OR"
         @handles = Handle.tagged_with(tags, any: true, wild: true)#.order("LOWER(name)")
       else
         @handles = Handle.tagged_with(tags)#.order("LOWER(name)")

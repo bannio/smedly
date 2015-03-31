@@ -2,15 +2,15 @@
 <fieldset>
 <legend>Edit details</legend>
 <%= render 'form' %>
-</fieldset>
-<br>
 
-<%= link_to "Handle list", handles_path, class: "button" %>
+<%= link_to "Back to Handle list", handles_path, class: "button" %>
 
 <%= link_to "View Twitter Profile", "https://twitter.com/#{@handle.name}", target: '_blank', class: "button" %>
 
 <%= link_to "Delete", handle_path(@handle), method: :delete, data: { confirm: "Are you sure?" }, class: "button" %>
+</fieldset>
 
+<br>
 <table id="posts-table">
   <tbody id="post-table-body">
     <%= render @handle.posts.includes(:platform).order(:platform_id, :posted_on) %>
