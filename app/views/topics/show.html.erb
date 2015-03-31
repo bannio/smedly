@@ -6,8 +6,8 @@
     URL: <%= @topic.url %><br>
     <%= simple_format("#{@topic.summary}") %>
   <div class="button-bar">
-    <%= link_to "Edit Topic", edit_topic_path(@topic), method: :get, class: "button" %>
     <%= link_to "Back to Topic list", topics_path, method: :get, class: "button" %>
+    <%= link_to "Edit Topic", edit_topic_path(@topic), method: :get, class: "button" %>
   </div>
   </fieldset>
 </section>
