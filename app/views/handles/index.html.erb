@@ -2,7 +2,7 @@
 
 <%= form_tag({controller: "handles", action: "index"}, method: "get") do %>
   <%= label_tag(:q, "Search for:") %>
-  <%= text_field_tag(:q,nil, placeholder: "tag") %>
+  <%= text_field_tag(:q, nil, placeholder: "tag or tags separated by comma. No quotes needed. Partial tags accepted", size: 75) %>
   <%= submit_tag "Search", class: "button" %>
 <% end %>
 
