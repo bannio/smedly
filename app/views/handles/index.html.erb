@@ -2,7 +2,8 @@
 
 <%= form_tag({controller: "handles", action: "index"}, method: "get") do %>
   <%= label_tag(:q, "Search for:") %>
-  <%= text_field_tag(:q, nil, placeholder: "tag or tags separated by comma. No quotes needed. Partial tags accepted", size: 75) %>
+  <%= text_field_tag(:q, nil, placeholder: "tag or tags separated by comma. No quotes needed. Partial tags OK with 'Or'", size: 75) %>
+  <%= select_tag "type", options_for_select([ "Or", "And" ], "Or") %>
   <%= submit_tag "Search", class: "button" %>
 <% end %>
 
