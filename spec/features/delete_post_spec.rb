@@ -2,6 +2,7 @@ require "rails_helper"
 
 describe "deleting posts", type: :feature, js: true do
   before do
+    FactoryGirl.create(:platform, name: "None")
     @topic = FactoryGirl.create(:topic, name: "Test delete posts")
     @post = FactoryGirl.create(:post, topic_id: @topic.id, content: "to be deleted")
   end

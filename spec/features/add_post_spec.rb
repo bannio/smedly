@@ -4,6 +4,7 @@ describe "adding posts to topics" do
 
     let(:topic){ FactoryGirl.create(:topic) }
   before do
+    FactoryGirl.create(:platform, name: "None")
     FactoryGirl.create(:platform, name: "Twitter")
   end
 

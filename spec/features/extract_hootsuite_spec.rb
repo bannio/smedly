@@ -3,6 +3,7 @@ require 'rails_helper'
 describe "Extracting files for Hootsuite" do
 
   before do
+    FactoryGirl.create(:platform, name: "None")
     @gis = FactoryGirl.create(:platform, name: "Twitter-GIS")
     @wr = FactoryGirl.create(:platform, name: "Twitter-WR")
     @li = FactoryGirl.create(:platform, name: "LinkedIn")

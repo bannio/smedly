@@ -2,6 +2,10 @@ require 'rails_helper'
 
 describe "editing a topic" do
 
+  before do
+    FactoryGirl.create(:platform, name: "None")
+  end
+
   let(:topic){ FactoryGirl.create(:topic, name: "original name") }
 
   it "allows a user to edit a topic" do
