@@ -42,10 +42,11 @@
 
 <fieldset id="hootsuite-radio-set">
 <legend>Hoot Suite file extract</legend>
-  <%= form_tag({controller: "posts", action: "extract"}, method: "get") do %>
+  <%= form_tag({controller: "posts", action: "extract"}, method: "get", id: "hoottweet-form") do %>
     <%= hidden_field_tag 'topic', @topic.id %>
-    <%= collection_radio_buttons(:platform, :id, Platform.all, :id, :name) %>
-    <%= submit_tag "Extract for Hootsuite", class: "button" %>
+    <%= collection_radio_buttons(:platform, :id, Platform.all, :id, :name, {checked: default_platform}) %>
+    <%= submit_tag "Extract for Hootsuite", class: "button", id: "extract-button" %>
+  <!-- <a href=# class="button" id="extract-button">Extract for Hootsuite</a> -->
   <% end %>
 </fieldset>
 </section>

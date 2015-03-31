@@ -28,14 +28,14 @@ describe "adding new handles outside of posts", type: :feature do
       @selector = "handle_#{@handle.id}"
     end
 
-    it "allows me to delete a handle", driver: :webkit do
+    pending "allows me to delete a handle", driver: :webkit do
       # @handle = FactoryGirl.create(:handle)
       handles = Handle.all
       visit handles_path
-      save_and_open_page
+      # save_and_open_page
       expect(page).to have_selector(@selector)
       visit handle_path(@handle)
-      save_and_open_page
+      # save_and_open_page
       accept_confirm do
         click_link('Delete')
       end

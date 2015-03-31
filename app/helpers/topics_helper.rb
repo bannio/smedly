@@ -67,4 +67,8 @@ module TopicsHelper
       "no-platform"
     end
   end
+
+  def default_platform
+    @default_platform ||= Platform.find_by(name: "None").id
+  end
 end
