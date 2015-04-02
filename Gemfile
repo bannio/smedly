@@ -34,6 +34,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'capistrano-rails', group: :development
   gem 'select2-rails'
   gem 'acts-as-taggable-on'
+  gem 'twitter'#, '~> 6.0'
+  gem 'figaro'
 group :development do
   gem "better_errors"
 end
