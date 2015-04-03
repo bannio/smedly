@@ -44,6 +44,14 @@ class HandlesController < ApplicationController
     end
   end
 
+  def refresh
+    # refresh twitter stats
+    @handle = Handle.find(params[:id])
+    @handle.refresh_twitter_stats
+    @handle.save
+    redirect_to @handle
+  end
+
   def update
     @handle = Handle.find(params[:id])
     @handle.tag_list = params[:handle][:tag_list] # replaces existing tags
