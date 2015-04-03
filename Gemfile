@@ -36,6 +36,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
   gem 'acts-as-taggable-on'
   gem 'twitter'#, '~> 6.0'
   gem 'figaro'
+  gem 'sucker_punch'
 group :development do
   gem "better_errors"
 end

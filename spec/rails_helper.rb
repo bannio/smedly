@@ -4,6 +4,7 @@ require 'spec_helper'
 require File.expand_path('../../config/environment', __FILE__)
 require 'rspec/rails'
 # require 'capybara/rspec'
+require 'sucker_punch/testing/inline'
 
 Capybara.javascript_driver = :webkit
 
