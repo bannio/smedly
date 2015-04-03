@@ -6,7 +6,11 @@ Rails.application.routes.draw do
       get 'extract'
     end
   end
-  resources :handles
+  resources :handles do
+    member do
+      get 'refresh'
+    end
+  end
 
   get 'autocomplete_tags',
   to: 'handles#autocomplete_tags',

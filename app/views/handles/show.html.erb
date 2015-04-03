@@ -1,13 +1,36 @@
 <h1><%= @handle.name %></h1>
+<%= link_to "Back to Handle list", handles_path, class: "button" %>
+
+<%= link_to "View Twitter Profile", "https://twitter.com/#{@handle.name}", target: '_blank', class: "button" %>
+<%= link_to "Delete", handle_path(@handle), method: :delete, data: { confirm: "Are you sure?" }, class: "button" %>
 <fieldset>
 <legend>Edit details</legend>
 <%= render 'form' %>
 
-<%= link_to "Back to Handle list", handles_path, class: "button" %>
-
-<%= link_to "View Twitter Profile", "https://twitter.com/#{@handle.name}", target: '_blank', class: "button" %>
-
-<%= link_to "Delete", handle_path(@handle), method: :delete, data: { confirm: "Are you sure?" }, class: "button" %>
+</fieldset>
+<fieldset>
+  <legend>Twitter Stats</legend>
+  <table id="twitter-stats-table" >
+    <tr>
+      <td>followers</td><td><%= @handle.followers %></td>
+    </tr>
+    <tr>
+      <td>tweets</td><td><%= @handle.tweets_count %></td>
+    </tr>
+    <tr>
+      <td>last tweet</td><td><%= @handle.last_tweet_date %></td>
+    </tr>
+    <tr>
+      <td>profile description</td><td><%= @handle.profile_description %></td>
+    </tr>
+    <tr>
+      <td>location</td><td><%= @handle.location %></td>
+    </tr>
+    <tr>
+      <td>profile image</td><td><img src="<%= @handle.profile_image_url %>" /></td>
+    </tr>
+  </table>
+  <%= link_to "Refresh", refresh_handle_path(@handle), class: "button" %>
 </fieldset>
 
 <br>
