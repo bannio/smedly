@@ -13,21 +13,21 @@
   <thead>
     <tr>
       <td>Handle</td>
-      <td></td>
       <td>Notes</td>
       <td>Followers</td>
-      <td>Following</td>
+      <td>Tweets</td>
+      <td>Last Tweet</td>
       <td>Tags</td>
     </tr>
   </thead>
   <tbody>
   <% @handles.each do |handle| %>
     <tr class="handle-row" id="<%= dom_id(handle) %>">
-      <td class="name"><%= handle.name %></td>
-      <td><%= link_to 'view', handle_path(handle) %></td>
+      <td class="name"><%= link_to handle.name, handle_path(handle) %></td>
       <td><%= handle.notes %></td>
       <td><%= handle.followers %></td>
-      <td><%= handle.following %></td>
+      <td><%= handle.tweets_count %></td>
+      <td><%= handle.last_tweet_date %></td>
       <td><%= handle.tag_list.to_s %></td>
     </tr>
   <% end %>
