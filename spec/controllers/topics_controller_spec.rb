@@ -8,6 +8,13 @@ RSpec.describe TopicsController, type: :controller do
       expect(response).to have_http_status(:success)
       expect(response).to render_template(:index)
     end
+
+    it "retrieves in descending publish date order" do
+      topic_last = FactoryGirl.create(:topic, publish_date: 3.days.from_now, name: "second")
+      topic_first = FactoryGirl.create(:topic, publish_date: 2.days.from_now, name: "first")
+      get :index
+      expect(assigns(:topics).to_a).to eq [topic_last, topic_first]
+    end
   end
 
   describe "GET show" do
