@@ -98,9 +98,28 @@ fieldset legend {
    border-top-color: #1b435e;
    background: #1b435e;
    }
-tr.post-row td {
-  border-bottom:1px solid black;
+// Table formats
+table {
+  border-collapse: collapse;
 }
+
+th, td {
+  border: none;
+}
+
+th {
+  background-color: LightGrey;
+}
+tr:nth-of-type(even) {
+  background-color: WhiteSmoke;
+}
+#twitter-stats-table tr:nth-of-type(even) {
+  background-color: #ddd;
+}
+// 
+// tr.post-row td {
+//   border-bottom:1px solid black;
+// }
 td.twitter-gis {
   background: #ffa500;
 }
