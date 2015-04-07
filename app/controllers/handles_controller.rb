@@ -26,7 +26,7 @@ class HandlesController < ApplicationController
     @handle.tag_list = params[:handle][:tag_list] # replaces existing tags
     @handle.name = params[:handle][:name]
     @handle.notes = params[:handle][:notes]
-    @handle.followers = params[:handle][:followers]
+    # @handle.followers = params[:handle][:followers]
     @handle.following = params[:handle][:following]
     if @handle.save
       redirect_to handles_path
@@ -57,7 +57,7 @@ class HandlesController < ApplicationController
     @handle.tag_list = params[:handle][:tag_list] # replaces existing tags
     @handle.name = params[:handle][:name]
     @handle.notes = params[:handle][:notes]
-    @handle.followers = params[:handle][:followers]
+    # @handle.followers = params[:handle][:followers]
     @handle.following = params[:handle][:following]
 
     @handle.save

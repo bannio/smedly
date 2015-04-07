@@ -13,22 +13,24 @@
   <thead>
     <tr>
       <td>Handle</td>
-      <td>Notes</td>
       <td>Followers</td>
-      <td>Tweets</td>
+      <td>Description</td>
       <td>Last Tweet</td>
       <td>Tags</td>
+      <td>Tweets</td>
+      <td>Notes</td>
     </tr>
   </thead>
   <tbody>
   <% @handles.each do |handle| %>
     <tr class="handle-row" id="<%= dom_id(handle) %>">
       <td class="name"><%= link_to handle.name, handle_path(handle) %></td>
-      <td><%= handle.notes %></td>
       <td><%= handle.followers %></td>
-      <td><%= handle.tweets_count %></td>
-      <td><%= handle.last_tweet_date %></td>
+      <td><%= handle.profile_description %></td>
+      <td><%= time_ago_in_words(handle.last_tweet_date) if handle.last_tweet_date %></td>
       <td><%= handle.tag_list.to_s %></td>
+      <td><%= handle.tweets_count %></td>
+      <td><%= handle.notes %></td>
     </tr>
   <% end %>
   </tbody>
