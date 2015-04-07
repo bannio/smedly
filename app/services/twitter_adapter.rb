@@ -12,6 +12,7 @@ class TwitterAdapter
   end
 
   def user
+    # rescue Twitter::Error::NotFound
     @user ||= client.user(@handle.name)
   end
 

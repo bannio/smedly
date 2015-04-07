@@ -11,6 +11,8 @@ class Handle < ActiveRecord::Base
     self.tweets_count = adapter.tweets_count
     self.last_tweet_date = adapter.last_tweet_date
     self.profile_description = adapter.profile_description
+  rescue Twitter::Error::NotFound
+    self.profile_description = "** Twitter user NOT FOUND **"
   end
 
 end
