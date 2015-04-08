@@ -83,11 +83,13 @@ fieldset legend {
   font-family: Helvetica, Arial, Sans-Serif;
   text-decoration: none;
   vertical-align: middle;
-  margin-top: 10px;
-  margin-right: 10px;
-  margin-bottom: 10px;
-  margin-left: 10px;
-  display: inline-block
+  margin: 5px;
+  // margin-top: 10px;
+  // margin-right: 10px;
+  // margin-bottom: 10px;
+  // margin-left: 10px;
+  display: inline-block;
+  cursor: pointer;
    }
 .button:hover {
    border-top-color: #28597a;
@@ -105,51 +107,60 @@ table {
 
 th, td {
   border: none;
+  // margin: 10px;
+  padding: 2px 5px 2px 5px;
 }
 
 th {
   background-color: LightGrey;
 }
-tr:nth-of-type(even) {
+.striped tr:nth-of-type(even) {
   background-color: WhiteSmoke;
 }
-#twitter-stats-table tr:nth-of-type(even) {
-  background-color: #ddd;
+
+.right-align {
+  text-align: right;
 }
-// 
+// #twitter-stats-table tr:nth-of-type(even) {
+//   background-color: #ddd;
+// }
+//
 // tr.post-row td {
 //   border-bottom:1px solid black;
 // }
-td.twitter-gis {
+
+// Background colours
+
+.twitter-gis {
   background: #ffa500;
 }
 
-td.twitter-wr {
+.twitter-wr {
   background: #f87431;
 }
 
-td.linkedin {
+.linkedin {
   background: #3bb9ff;
 }
 
-td.facebook-gis {
+.facebook-gis {
   background: #99c6ae;
 }
 
-td.facebook-wr {
+.facebook-wr {
   background: #89c35c;
 }
 
-td.none {
+.none {
   background: #ffff00;
 }
-td.draft {
+.draft {
   background: #ffff00;
 }
-td.final {
+.final {
   background: #ffa500;
 }
-td.posted {
+.posted {
   background: #99c6ae;
 }
 .no-platform {

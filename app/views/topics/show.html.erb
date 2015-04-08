@@ -23,7 +23,7 @@
   <% end %>
 </fieldset>
 <br>
-<table id="posts-table">
+<table id="posts-table" class="striped">
   <tbody id="post-table-body">
     <%= render @topic.posts.includes(:platform).order(:platform_id, :posted_on) %>
   </tbody>

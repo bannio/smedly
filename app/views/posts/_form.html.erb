@@ -9,5 +9,5 @@
   <%= f.datetime_select :posted_on, default: post_date_default %></p>
   <p><%= f.label :url, "http://" %> <%= f.text_field :url, size: 50 %></p>
   <p><%= f.label :status %> <%= f.select(:status, Post.statuses.keys.map {|status| [status.titleize,status]}) %></p>
-  <p><%= f.submit class: "button" %></p>
+  <%= f.submit class: "button" %>
   <% end %>
