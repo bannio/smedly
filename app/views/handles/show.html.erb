@@ -10,7 +10,7 @@
 </fieldset>
 <fieldset>
   <legend>Twitter Stats</legend>
-  <table id="twitter-stats-table" >
+  <table id="twitter-stats-table" class="plain">
     <tr>
       <td>followers</td><td><%= @handle.followers %></td>
     </tr>
@@ -34,7 +34,7 @@
 </fieldset>
 
 <br>
-<table id="posts-table">
+<table id="posts-table" class="striped">
   <tbody id="post-table-body">
     <%= render @handle.posts.includes(:platform).order(:platform_id, :posted_on) %>
   </tbody>

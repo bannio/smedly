@@ -2,7 +2,7 @@
   <td class="<%= platform_background(post) %>"><%= post.platform.name if post.platform %></td>
   <td><%= post_time_format(post.posted_on) if post.posted_on %></td>
   <td class="content"><%= post.content %></td>
-  <td class="<%= count_background(post.content.length) %>"><%= post.content.length %></td>
+  <td class="<%= count_background(post.content.length) %> right-align"><%= post.content.length %></td>
   <td><%= link_to post.url, post.url, target: '_blank' unless post.url.blank? %></td>
   <td><%= post_day_format(post.posted_on) if post.posted_on %></td>
   <td class="<%= post.status %>"><%= post.status %></td>
