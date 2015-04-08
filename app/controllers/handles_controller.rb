@@ -30,7 +30,8 @@ class HandlesController < ApplicationController
     if @handle.save
       redirect_to handles_path
     else
-      render new
+      flash.now[:alert] = "This handle name may already be in use"
+      render 'new'
     end
   end
 
@@ -58,8 +59,12 @@ class HandlesController < ApplicationController
     @handle.notes = params[:handle][:notes]
     @handle.following = params[:handle][:following]
 
-    @handle.save
-    redirect_to @handle
+    if @handle.save
+      redirect_to @handle
+    else
+      flash.now[:alert] = "The update was not saved due to an error"
+      render 'show'
+    end
   end
 
   def destroy

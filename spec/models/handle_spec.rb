@@ -22,4 +22,11 @@ RSpec.describe Handle, type: :model do
     expect(fake_adapter).to have_received(:location)
     expect(TwitterAdapter).to have_received(:new)
   end
+
+  it "requires a unique name" do
+    handle1 = Handle.create(name: "@test")
+    handle2 = Handle.new(name: "@test")
+
+    expect(handle2).not_to be_valid
+  end
 end

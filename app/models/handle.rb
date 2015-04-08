@@ -3,6 +3,8 @@ class Handle < ActiveRecord::Base
   has_many :posts, through: :post_handles
   has_many :post_handles
 
+  validates_uniqueness_of :name
+
   def refresh_twitter_stats
     adapter = TwitterAdapter.new(self)
     self.location = adapter.location
