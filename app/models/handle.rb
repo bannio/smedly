@@ -5,6 +5,9 @@ class Handle < ActiveRecord::Base
 
   validates_uniqueness_of :name
 
+  after_create :get_twitter_stats
+
+  scope :updated_more_than_a_day_ago, -> { where("updated_at < ?", 1.day.ago) }
   scope :updated_more_than_a_week_ago, -> { where("updated_at < ?", 1.week.ago) }
 
   def refresh_twitter_stats
@@ -17,6 +20,12 @@ class Handle < ActiveRecord::Base
     self.profile_description = adapter.profile_description
   rescue Twitter::Error::NotFound
     self.profile_description = "** Twitter user NOT FOUND **"
+  end
+
+  private
+
+  def get_twitter_stats
+    RefreshStats.perform_later(self)
   end
 
 end

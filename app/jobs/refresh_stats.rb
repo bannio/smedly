@@ -1,6 +1,5 @@
 class RefreshStats < ActiveJob::Base
   queue_as :default
-  # include SuckerPunch::Job
 
   def perform(handle)
     ActiveRecord::Base.connection_pool.with_connection do

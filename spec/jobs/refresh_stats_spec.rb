@@ -9,7 +9,7 @@ describe RefreshStats do
 
   it "queues a job" do
     RefreshStats.perform_later
-    puts ActiveJob::Base.queue_adapter.enqueued_jobs
+    # puts ActiveJob::Base.queue_adapter.enqueued_jobs
     expect(ActiveJob::Base.queue_adapter.enqueued_jobs.size).to eq 1
   end
 
