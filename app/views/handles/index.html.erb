@@ -14,6 +14,7 @@
     <tr>
       <th>Handle</th>
       <th>Followers</th>
+      <th>Location</th>
       <th>Description</th>
       <th>Last Tweet</th>
       <th>Tags</th>
@@ -26,6 +27,7 @@
     <tr class="handle-row" id="<%= dom_id(handle) %>">
       <td class="name"><%= link_to handle.name, handle_path(handle) %></td>
       <td class="right-align"><%= handle.followers %></td>
+      <td><%= handle.location %></td>
       <td><%= handle.profile_description %></td>
       <td><%= time_ago_in_words(handle.last_tweet_date) if handle.last_tweet_date %></td>
       <td><%= handle.tag_list.to_s %></td>
