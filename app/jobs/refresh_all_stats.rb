@@ -1,6 +1,5 @@
 class RefreshAllStats < ActiveJob::Base
   queue_as :default
-  # include SuckerPunch::Job
 
   def perform(handles)
     return if handles.empty?

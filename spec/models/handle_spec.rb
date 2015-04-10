@@ -1,5 +1,7 @@
 require 'rails_helper'
 
+ActiveJob::Base.queue_adapter = :test
+
 RSpec.describe Handle, type: :model do
 
   let(:fake_adapter){ instance_double(TwitterAdapter) }
@@ -28,5 +30,11 @@ RSpec.describe Handle, type: :model do
     handle2 = Handle.new(name: "@test")
 
     expect(handle2).not_to be_valid
+  end
+
+  it "queues a job to update twitter stats after create" do
+    ActiveJob::Base.queue_adapter.enqueued_jobs = []
+    handle.save
+    expect(ActiveJob::Base.queue_adapter.enqueued_jobs.size).to eq 1
   end
 end
