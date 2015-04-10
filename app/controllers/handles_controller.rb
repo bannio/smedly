@@ -52,6 +52,18 @@ class HandlesController < ApplicationController
     redirect_to @handle
   end
 
+  def refresh_all
+    # refresh all handles' twitter stats
+    handles = Handle.updated_more_than_a_week_ago.to_a
+    if !handles.empty?
+      RefreshAllStats.perform_later(handles)
+      flash[:notice] = "Refresh in progress - updating #{view_context.pluralize(handles.count, 'entry')}"
+    else
+      flash[:notice] = "Everything up to date"
+    end
+    redirect_to handles_path
+  end
+
   def update
     @handle = Handle.find(params[:id])
     @handle.tag_list = params[:handle][:tag_list] # replaces existing tags

@@ -7,7 +7,7 @@ describe "getting twitter details", vcr: {record: :once} do
 
   it "updates the Twitter details" do
     visit handle_path(@handle)
-    url = "https://pbs.twimg.com/profile_images/513038727199744001/B4Fhaytg_normal.jpeg"
+    url = "http://pbs.twimg.com/profile_images/513038727199744001/B4Fhaytg_normal.jpeg"
     click_on "Refresh"
     expect(page).to have_selector("img[src='#{url}']")
     expect(page).to have_content("UK")
