@@ -5,6 +5,8 @@ class Handle < ActiveRecord::Base
 
   validates_uniqueness_of :name
 
+  scope :updated_more_than_a_week_ago, -> { where("updated_at < ?", 1.week.ago) }
+
   def refresh_twitter_stats
     adapter = TwitterAdapter.new(self)
     self.location = adapter.location

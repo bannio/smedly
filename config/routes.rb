@@ -10,6 +10,9 @@ Rails.application.routes.draw do
     member do
       get 'refresh'
     end
+    collection do
+      get 'refresh_all'
+    end
   end
 
   get 'autocomplete_tags',

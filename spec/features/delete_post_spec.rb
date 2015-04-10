@@ -9,7 +9,6 @@ describe "deleting posts", type: :feature, js: true do
 
   it "allows me to delete a post", driver: :webkit do
     visit topic_path(@topic)
-    # save_and_open_page
     @selector = "post_#{@post.id}"
 
     within "#post_#{@post.id}" do
@@ -18,7 +17,6 @@ describe "deleting posts", type: :feature, js: true do
       end
     end
     visit topic_path(@topic)
-    # save_and_open_page
     expect(page).to_not have_selector(@selector)
   end
 end
