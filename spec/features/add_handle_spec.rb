@@ -1,4 +1,5 @@
 require 'rails_helper'
+ActiveJob::Base.queue_adapter = :test
 
 describe "adding new handles outside of posts", type: :feature do
   
@@ -18,8 +19,11 @@ describe "adding new handles outside of posts", type: :feature do
     click_on "New"
     fill_in "handle[name]", with: "@mytesthandle"
     click_on "Create Handle"
-    expect(current_path).to eq handles_path
-    expect(page).to have_selector("td.name", text: "@mytesthandle")
+    handle = Handle.find_by(name: "@mytesthandle")
+    expect(current_path).to eq handle_path(handle)
+    # expect(current_path).to eq handles_path
+    # expect(page).to have_selector("td.name", text: "@mytesthandle")
+    expect(page).to have_selector("h1", text: "@mytesthandle")
   end
 
   describe "deleting handles" do
