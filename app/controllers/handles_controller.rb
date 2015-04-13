@@ -28,7 +28,8 @@ class HandlesController < ApplicationController
     @handle.notes = params[:handle][:notes]
     @handle.following = params[:handle][:following]
     if @handle.save
-      redirect_to handles_path
+      redirect_to @handle
+      # redirect_to handles_path
     else
       flash.now[:alert] = "This handle name may already be in use"
       render 'new'
