@@ -5,6 +5,9 @@ Rails.application.routes.draw do
     collection do
       get 'extract'
     end
+    member do
+      patch 'toggle_status'
+    end
   end
   resources :handles do
     member do

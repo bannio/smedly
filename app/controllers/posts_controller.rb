@@ -60,6 +60,11 @@ class PostsController < ApplicationController
     redirect_to @topic
   end
 
+  def toggle_status
+    @post = Post.find(params[:id])
+    TogglePostStatus.new(@post).toggle
+  end
+
   private
 
   def post_params
