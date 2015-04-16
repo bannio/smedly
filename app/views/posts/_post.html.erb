@@ -5,7 +5,7 @@
   <td class="<%= count_background(post.content.length) %> right-align"><%= post.content.length %></td>
   <td><%= link_to post.url, post.url, target: '_blank' unless post.url.blank? %></td>
   <td><%= post_day_format(post.posted_on) if post.posted_on %></td>
-  <td class="<%= post.status %>"><%= post.status %></td>
+  <td class="<%= post.status %>"><%= button_to post.status, toggle_status_post_path(post), method: :patch, remote: true %></td>
   <% if controller_name == "handles" then %>
   <td><%= link_to "view topic", topic_path(post.topic) %></td>
   <% else %>
