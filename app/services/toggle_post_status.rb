@@ -4,8 +4,14 @@ class TogglePostStatus
   end
 
   def toggle
-    return @post if @post.posted?
-    @post.final? ? @post.draft! : @post.final!
+    case @post.status
+    when "draft"
+      @post.final!
+    when "final"
+      @post.posted!
+    else
+      @post.draft!
+    end
     @post
   end
 

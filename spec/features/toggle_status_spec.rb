@@ -6,26 +6,26 @@ describe "toggling status of posts", type: :feature, js: true, driver: :webkit d
     FactoryGirl.create(:platform, name: "None")
     @platform = FactoryGirl.create(:platform, name: "Twitter")
     @topic = FactoryGirl.create(:topic)
-    @draft_post = FactoryGirl.create(:post, topic: @topic, content: "draft post", platform: @platform, status: 0)
-    @final_post = FactoryGirl.create(:post, topic: @topic, content: "final post", platform: @platform, status: 1)
-    @posted_post = FactoryGirl.create(:post, topic: @topic, content: "posted post", platform: @platform, status: 2)
-  end
-  
-  it "allows change from draft to final" do
-    visit topic_path(@topic)
-    click_on "draft"
-    expect(page).to have_xpath("//tr[@id='post_1']/td[@class='final'")
   end
 
-  it "allows change from final to draft" do
+  it "allows change from draft to final" do
+    @draft_post = FactoryGirl.create(:post, topic: @topic, content: "draft post", platform: @platform, status: 0)
+    visit topic_path(@topic)
+    click_on "draft"
+    expect(page).to have_selector("td.final")
+  end
+
+  it "allows change from final to posted" do
+    @final_post = FactoryGirl.create(:post, topic: @topic, content: "final post", platform: @platform, status: 1)
     visit topic_path(@topic)
     click_on "final"
-    expect(page).to have_selector("td.draft")
+    expect(page).to have_selector("td.posted")
   end
 
-  it "ignores posted status" do
+  it "allows change from posted to draft" do
+    @posted_post = FactoryGirl.create(:post, topic: @topic, content: "posted post", platform: @platform, status: 2)
     visit topic_path(@topic)
-    click_on "draft"
-    expect(page).to have_selector("td.posted")
+    click_on "posted"
+    expect(page).to have_selector("td.draft")
   end
 end
