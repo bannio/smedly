@@ -4,21 +4,19 @@ RSpec.describe TogglePostStatus, type: :service do
 
   it "changes draft to final" do
     post = FactoryGirl.build(:post, status: 0)
+    expect(post).to receive(:final!)
     TogglePostStatus.new(post).toggle
-    expect(post.final?).to be_truthy
   end
 
-  it "changes final to draft" do
+  it "changes final to posted" do
     post = FactoryGirl.build(:post, status: 1)
+    expect(post).to receive(:posted!)
     TogglePostStatus.new(post).toggle
-    expect(post.draft?).to be_truthy
-    expect(post.final?).to be_falsey
   end
 
-  it "ignores posted" do
+  it "changes posted to draft" do
     post = FactoryGirl.build(:post, status: 2)
+    expect(post).to receive(:draft!)
     TogglePostStatus.new(post).toggle
-    expect(post.final?).to be_falsey
-    expect(post.posted?).to be_truthy
   end
 end
