@@ -4,6 +4,7 @@ describe "adding topics" do
   it "allows a user to create a topic" do
     visit new_topic_path
     fill_in "topic[name]", with: "First Report"
+    fill_in "topic[publish_date]", with: Date.today
     click_on "Create Topic"
     visit topics_path
     @topic = Topic.find_by_name("First Report")

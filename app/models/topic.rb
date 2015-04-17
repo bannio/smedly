@@ -2,7 +2,7 @@ class Topic < ActiveRecord::Base
 
   has_many :posts
 
-  validates_presence_of :name
+  validates_presence_of :name, :publish_date
   enum status: [ :active, :archived ]
 
   def handles

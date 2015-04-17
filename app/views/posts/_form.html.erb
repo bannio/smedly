@@ -6,7 +6,7 @@
   <p><%= f.text_area :content, cols: 50, rows: 5, placeholder: "message here" %></p>
   <div id="result">Char Count <span id="charCount" style="color: <%= count_colour(post) %>"><%= content_length(post) %></span></div>
   <p><%= f.label :posted_on, "Scheduled for:" %>
-  <%= f.datetime_select :posted_on, default: post_date_default %></p>
+  <%= f.datetime_select :posted_on, default: post_date_default(topic.publish_date) %></p>
   <p><%= f.label :url, "http://" %> <%= f.text_field :url, size: 50 %></p>
   <p><%= f.label :status %> <%= f.select(:status, Post.statuses.keys.map {|status| [status.titleize,status]}) %></p>
   <%= f.submit class: "button" %>

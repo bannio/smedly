@@ -17,9 +17,9 @@
 <fieldset id="post-form">
 <legend>Post editor</legend>
   <% if @post %>
-    <%= render partial: 'posts/form', locals: {post: @post} %>
+    <%= render partial: 'posts/form', locals: {post: @post, topic: @topic} %>
   <% else %>
-    <%= render partial: 'posts/form', locals: {post: Post.new(topic_id: @topic.id)} %>
+    <%= render partial: 'posts/form', locals: {post: Post.new(topic_id: @topic.id), topic: @topic} %>
   <% end %>
 </fieldset>
 <br>

@@ -19,14 +19,14 @@ module TopicsHelper
     date.strftime("%H:%M")
   end
 
-  def post_date_default
+  def post_date_default(date)
     # Hootsuite requires times to end in 0 or 5
-    1.days.from_now.change(hour: 12, min: 05)
+    date.to_datetime.change(hour: 12, min: 05)
   end
 
   def content_length(post)
     if post.content
-      post.content.length 
+      post.content.length
     else
       0
     end
@@ -41,7 +41,7 @@ module TopicsHelper
       "orange"
     else
       "black"
-    end  
+    end
   end
 
   # def formatted_handles(handles)
