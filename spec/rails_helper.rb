@@ -8,6 +8,8 @@ require 'sucker_punch/testing/inline'
 
 Capybara.javascript_driver = :webkit
 
+ActiveJob::Base.queue_adapter = :test
+
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in

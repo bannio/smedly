@@ -11,13 +11,14 @@ class Handle < ActiveRecord::Base
   scope :updated_more_than_a_week_ago, -> { where("updated_at < ?", 1.week.ago) }
 
   def refresh_twitter_stats
-    adapter = TwitterAdapter.new(self)
-    self.location = adapter.location
-    self.profile_image_url = adapter.profile_image_url
-    self.followers = adapter.followers
-    self.tweets_count = adapter.tweets_count
-    self.last_tweet_date = adapter.last_tweet_date
-    self.profile_description = adapter.profile_description
+    user = $twitter.user(self.name)
+    # user = TwitterAdapter.new(self).user
+    self.location = user.location
+    self.profile_image_url = user.profile_image_url
+    self.followers = user.followers_count
+    self.tweets_count = user.tweets_count
+    self.last_tweet_date = user.status.created_at
+    self.profile_description = user.description
   rescue Twitter::Error::NotFound
     self.profile_description = "** Twitter user NOT FOUND **"
   end
