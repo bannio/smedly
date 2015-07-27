@@ -1,0 +1,29 @@
+# Add account credentials and API keys here.
+# See http://railsapps.github.io/rails-environment-variables.html
+# This file should be listed in .gitignore to keep your settings secret!
+# Each entry sets a local environment variable and overrides ENV variables in the Unix shell.
+
+# Use rake figaro:heroku to export the variables to Heroku
+
+
+production:
+ SECRET_KEY_BASE: ""
+ TW_CONSUMER_KEY: ""
+ TW_CONSUMER_SECRET: ""
+ TW_ACCESS_TOKEN: ""
+ TW_ACCESS_SECRET: ""
+
+development:
+ TW_CONSUMER_KEY: "YLfUTJCaAPLFujGnCRcOCwUvW"
+ TW_CONSUMER_SECRET: "ftjvabopiBI6M9dZ7j07rRs4mslyRXfMZGsAnRsbm0eXK0oSVn"
+ TW_BEARER_TOKEN: "AAAAAAAAAAAAAAAAAAAAAMxLfAAAAAAAdAo1tem4ROEz0wR3BH%2B8KpDzVOw%3DRb1WP1QL0qPKBc4jndOV1kRAtW9wmZDX8EfPUnXl1zsSqcuP0q"
+ TW_ACCESS_TOKEN: ""
+ TW_ACCESS_SECRET: ""
+
+test:
+ ENABLE_HTTPS: "no"
+ TW_CONSUMER_KEY: "YLfUTJCaAPLFujGnCRcOCwUvW"
+ TW_CONSUMER_SECRET: "ftjvabopiBI6M9dZ7j07rRs4mslyRXfMZGsAnRsbm0eXK0oSVn"
+ TW_BEARER_TOKEN: "AAAAAAAAAAAAAAAAAAAAAMxLfAAAAAAAdAo1tem4ROEz0wR3BH%2B8KpDzVOw%3DRb1WP1QL0qPKBc4jndOV1kRAtW9wmZDX8EfPUnXl1zsSqcuP0q"
+ TW_ACCESS_TOKEN: ""
+ TW_ACCESS_SECRET: ""
